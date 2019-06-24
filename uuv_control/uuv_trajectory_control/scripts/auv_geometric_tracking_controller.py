@@ -306,6 +306,12 @@ if __name__ == '__main__':
 
     try:
         node = AUVGeometricTrackingController()
+        try:
+            node.local_planner._services
+        except NameError:
+            print "well, it WASN'T defined after all!"
+        else:
+            print "sure, it was defined."
         rospy.spin()
     except rospy.ROSInterruptException:
         print('caught exception')
